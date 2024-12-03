@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fullscreen falling heart GIF as background */
+        .falling-heart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('falling-heart.gif') no-repeat center center;
+            background-size: cover;
+            z-index: -1; /* Keeps the GIF behind the content */
+            opacity: 0.3; /* Lower opacity to make the hearts less intense */
+        }
+
+        /* Container for the rest of the content */
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Styling for the buttons */
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .yes-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .no-button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Heart image resized to match button dimensions */
+        .heart-image {
+            width: 200px;  /* Set the width to match button */
+            height: 200px;  /* Set the height to match button */
+            object-fit: contain;  /* Ensure the image scales correctly */
+            margin-bottom: 20px;  /* Space between heart and text */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Fullscreen falling heart GIF -->
+    <div class="falling-heart"></div>
+
+    <!-- Content -->
+    <div class="container">
+        <!-- Heart image resized to match buttons -->
+        <img src="heart.gif" alt="Heart image" class="heart-image">
+
+        <h1>Do you love me?</h1>
+        <button class="button yes-button" onclick="redirectToBearPage()">Yes</button>
+        <button class="button no-button" onclick="moveButton()">No</button>
+    </div>
+
+    <script>
+        // Function to move the "No" button randomly
+        function moveButton() {
+            var button = document.querySelector('.no-button');
+            var maxX = window.innerWidth - button.offsetWidth - 10;  // Ensure button doesn't go off the right side
+            var maxY = window.innerHeight - button.offsetHeight - 10; // Ensure button doesn't go off the bottom
+
+            // Ensure random X and Y coordinates are within the screen bounds, including a margin
+            var randomX = Math.max(0, Math.floor(Math.random() * maxX));  // Prevent going to negative X (left side)
+            var randomY = Math.max(0, Math.floor(Math.random() * maxY));  // Prevent going to negative Y (top side)
+
+            // Apply the new position to the "No" button
+            button.style.position = 'absolute';
+            button.style.left = randomX + 'px';
+            button.style.top = randomY + 'px';
+        }
+
+        // Function to handle "Yes" button click and redirect to bear.html
+        function redirectToBearPage() {
+            window.location.href = 'bear.html'; // Redirect to bear.html page
+        }
+    </script>
+
+</body>
+</html>

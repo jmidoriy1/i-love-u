@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear GIF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Fullscreen falling heart GIF as background */
+        .falling-heart {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('falling-heart.gif') no-repeat center center;
+            background-size: cover;
+            z-index: -1; /* Keeps the GIF behind the content */
+            opacity: 0.3; /* Lower opacity to make the hearts less intense */
+        }
+
+        /* Bear GIF styling */
+        .gif-image {
+            width: 500px; /* Adjust width as per your requirement */
+            height: 500px; /* Adjust height */
+            object-fit: contain;
+            z-index: 1;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Fullscreen falling heart GIF -->
+    <div class="falling-heart"></div>
+
+    <!-- Bear GIF image -->
+    <img src="bear.gif" alt="Bear GIF" class="gif-image">
+
+</body>
+</html>
